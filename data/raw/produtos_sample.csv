@@ -1,0 +1,39 @@
+nome,cat,preco,custo,peso,id_produto
+Cerveja Skol Pilsen Lata 350ml,Cerveja Comum,3.49,2.1,70,1
+Cerveja Brahma Chopp Lata 350ml,Cerveja Comum,3.59,2.2,80,2
+Cerveja Antarctica Boa Lata 350ml,Cerveja Comum,3.39,2.05,80,3
+Cerveja Heineken Long Neck 330ml,Cerveja Premium,7.5,4.8,100,4
+Cerveja Spaten Munchen Lata 350ml,Cerveja Premium,5.29,3.5,90,5
+Cerveja Imperio Puro Malte Lata 350ml,Cerveja Premium,4.5,2.9,95,6
+Cerveja Michelob Ultra Lata 350ml,Cerveja Especial,5.9,3.8,40,7
+Cerveja Stella Artois Pure Gold 330ml,Cerveja Especial,6.5,4.2,35,8
+Cerveja Bruder Baixa Gastronomia (S/ Glúten) 600ml,Cerveja Artesanal,22.9,14.0,20,9
+Roleta Russa Easy IPA Lata 350ml,Cerveja Artesanal,5.99,3.5,30,10
+Roleta Russa Imperial IPA Lata 350ml,Cerveja Artesanal,10.99,7.6,10,11
+Roleta Russa New England IPA Lata 350ml,Cerveja Artesanal,9.99,6.8,15,12
+Growler Roleta Russa Easy IPA 1L,Cerveja Artesanal,19.99,13.4,30,13
+Cerveja Imigração Pilsen Garrafa 500ml,Cerveja Artesanal,16.99,10.0,25,14
+Cerveja Imigração Hop Lager Lata 350ml,Cerveja Artesanal,4.99,3.5,40,15
+Growler Imigração Export 1L,Cerveja Artesanal,15.99,10.0,25,16
+Cerveja Dogma Rizoma Double IPA 473ml,Cerveja Artesanal,29.99,18.3,20,17
+Cerveja Dogma American IPA (Lata Nova 355ml),Cerveja Artesanal,14.99,8.33,35,18
+Cerveja Escafandrista Smoothie Sour 473ml,Cerveja Artesanal,45.9,30.0,5,19
+Cerveja Three Lions Session IPA (SJC) 473ml,Cerveja Artesanal,24.0,15.0,15,20
+Cerveja Campinas Forasteira IPA 473ml,Cerveja Artesanal,21.0,13.5,18,21
+Wienbier 55 Pilsen Lata 710ml,Cerveja Comum,8.9,5.5,60,22
+Wienbier 58 Chopp de Vinho 710ml,Coquetel Alcoólico,9.9,6.0,50,23
+Cerveja Guinness Draught Lata 440ml,Importada,37.99,28.0,25,24
+Cerveja Paulaner Weissbier 500ml,Importada,24.9,16.5,12,25
+Cerveja Blue Moon Belgian White 355ml,Importada,17.9,11.0,15,26
+Whisky Jack Daniels 1L,Destilados,169.9,120.0,5,27
+Gin Tanqueray 750ml,Destilados,119.9,85.0,5,28
+Vodka Absolut 1L,Destilados,89.9,60.0,8,29
+Cachaça Velho Barreiro 910ml,Destilados,14.9,9.0,25,30
+Refrigerante Coca-Cola 2L,Não Alcoólico,10.9,7.5,100,31
+Água Mineral s/ Gás 500ml,Não Alcoólico,3.0,0.9,80,32
+Energético Red Bull 250ml,Não Alcoólico,8.9,5.5,60,33
+Gelo Filtrado Cubo 5kg,Gelo/Carvão,14.0,6.0,75,34
+Carvão Vegetal 4kg,Gelo/Carvão,22.0,12.0,40,35
+Chocolate KitKat,Bomboniere,4.5,2.5,50,36
+Salgadinho Doritos 140g,Bomboniere,12.9,8.0,45,37
+Arroz Tio João 1kg,Mercearia,7.9,5.0,20,38
