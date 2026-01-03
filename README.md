@@ -22,6 +22,16 @@ Este projeto simula a estruturação da área de dados de um comércio local ("A
 
 ---
 
+## 🔗 Ativos e Conexões (Links Rápidos)
+
+| Camada | Tipo de Ativo | Link de Acesso na Dadosfera |
+| :--- | :--- | :--- |
+| **Ingestão** | Conexão PostgreSQL (Supabase) | [Acessar Conexão](https://app.dadosfera.ai/en-US/collect/connections/1767222609772_7i01rd4w_postgresql-1.0.0) |
+| **Bronze** | Pipeline de Carga (RAW) | [Visualizar Pipeline Bronze](https://app.dadosfera.ai/en-US/collect/pipelines/50c7fc54-bd81-4c51-9991-7342aae898b1) |
+| **Silver** | Pipeline de Transformação (CDM) | [Visualizar Pipeline Silver](https://app.dadosfera.ai/en-US/collect/pipelines/e34fac1c-7a56-430f-a370-9a44dffac9fd) |
+| **BI** | Dashboard Público (Metabase) | [Abrir Dashboard Externo](http://metabase-treinamentos.dadosfera.ai/public/dashboard/2d9f8081-d542-44c6-8f42-e59d7c056b10) |
+
+---
 
 ## 📋 Item 0: Planejamento (Agile & PMBOK)
 
@@ -110,6 +120,20 @@ Como diferencial, a catalogação não foi feita apenas manualmente. Foi desenvo
 2. Atualizar descrições técnicas e de negócio.
 3. Aplicar tags (landing, varejo, sintético) automaticamente.
 
+Ativos de Coleta e Ingestão
+
+- Conexão PostgreSQL (Supabase): [Link para Conexão](https://app.dadosfera.ai/en-US/collect/connections/1767222609772_7i01rd4w_postgresql-1.0.0)
+
+- Pipeline Camada Bronze (Arquivos RAW): [Link para Pipeline](https://app.dadosfera.ai/en-US/collect/pipelines/50c7fc54-bd81-4c51-9991-7342aae898b1)
+
+Assets Acessíveis pela Camada Bronze
+
+- PUBLIC.VAREJO | DIMENSÃO CLIENTE: [Acessar Asset](https://app.dadosfera.ai/en-US/catalog/data-assets/4eef3148-79a4-473e-8f5a-060810b55883)
+
+- PUBLIC.VAREJO | DIMENSÃO PRODUTOS: [Acessar Asset](https://app.dadosfera.ai/en-US/catalog/data-assets/9cb82842-75af-4ec1-8f5c-0a18f677a419)
+
+- PUBLIC.VAREJO | FATO VENDAS (5 ANOS): [Acessar Asset](https://app.dadosfera.ai/en-US/catalog/data-assets/7c448aae-d76d-4ef3-a29d-a5a2e6da9be3)
+
 ## Item 4: Data Quality (Great Expectations)
 Antes de disponibilizar os dados para análise, foi implementada uma camada de validação usando a biblioteca Great Expectations.
 
@@ -128,6 +152,18 @@ Principais Regras Validadas:
 ## Item 6: Arquitetura e Modelagem (Silver Layer)
 
 Adotou-se a arquitetura **Medallion (Bronze/Silver/Gold)** com separação lógica por Schemas no banco de dados para garantir organização e segurança.
+
+Ativos de Transformação (Silver Layer)
+
+- Pipeline Camada Silver (CDM): [Link para Pipeline Silver](https://app.dadosfera.ai/en-US/collect/pipelines/e34fac1c-7a56-430f-a370-9a44dffac9fd)
+
+Assets Acessíveis pela Camada Silver (CDM)
+
+- PUBLIC.VAREJO | SILVER | CONTACT (CDM): [Acessar Asset](https://app.dadosfera.ai/en-US/catalog/data-assets/fbee5296-3b46-41ff-8bbb-a2d0b290aa00)
+
+- PUBLIC.VAREJO | SILVER | PRODUCT (CDM): [Acessar Asset](https://app.dadosfera.ai/en-US/catalog/data-assets/4e6abcaa-2d04-497d-922e-ea15b004e5b9)
+
+- PUBLIC.VAREJO | SILVER | SALES ORDER (CDM):[Acessar Asset](https://app.dadosfera.ai/en-US/catalog/data-assets/dd63cab5-8627-410d-a3dc-c9a37a29a2bc)
 
 ### Common Data Model (CDM)
 Os dados foram mapeados para o padrão CDM para garantir interoperabilidade.
