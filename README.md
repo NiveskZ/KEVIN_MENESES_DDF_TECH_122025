@@ -69,15 +69,15 @@ FASE 3: Qualidade de Dados (Item 4)
 
 FASE 4: Análise e Valor (Item 7)
 
-  - [ ] Criação do Dataset de Visualização.
+  - [x] Criação do Dataset de Visualização.
 
-  - [ ] Desenvolvimento do Dashboard (Metabase/Dadosfera).
+  - [x] Desenvolvimento do Dashboard (Metabase/Dadosfera).
 
-  - [ ] Análise de Categorias.
+  - [x] Análise de Categorias.
 
-  - [ ] Análise de Série Temporal (Sazonalidade).
+  - [x] Análise de Série Temporal (Sazonalidade).
 
-  - [ ] Resposta a 5 perguntas de negócio estratégicas.
+  - [x] Resposta a 5 perguntas de negócio estratégicas.
 
 FASE 5: Entrega (Item 10)
 
@@ -198,3 +198,56 @@ graph TD
     S2 -.-> G1
     S3 -.-> G1
 ```
+
+## Item 7: Visualização e Geração de Valor (Analytics)
+
+A etapa final consistiu na criação de um ecossistema analítico no **Metabase (integrado à Dadosfera)**, onde os dados processados na camada Silver foram transformados em insights de negócio.
+
+### Dashboard Interativo
+O dashboard completo pode ser acessado publicamente através do link abaixo:
+[Dashboard de Performance - Adega Local](http://metabase-treinamentos.dadosfera.ai/public/dashboard/2d9f8081-d542-44c6-8f42-e59d7c056b10)
+
+![Dashboard](https://github.com/NiveskZ/KEVIN_MENESES_DDF_TECH_122025/blob/main/imgs/Dashboard.png)
+---
+
+### Questões de Negócio e Visualizações
+
+Para atender aos requisitos do case, foram criadas **7 visualizações** utilizando diferentes tipos de gráficos para responder a perguntas estratégicas:
+
+1. **Faturamento Total Histórico**
+   - **Tipo:** Número (Big Number)
+   - **Objetivo:** Visão macro do faturamento acumulado nos últimos 5 anos de operação.
+
+2. **Perfil do Cliente VIP (Top Spender)**
+   - **Tipo:** Detalhe 
+   - **Pergunta:** Qual cliente possui o maior LTV (Life Time Value)?
+   - **Insight:** Exibe o nome do cliente, quantidade de pedidos e total investido na loja.
+
+3. **Performance Diária (Ticket Médio)**
+   - **Tipo:** Tendência (Smart Number)
+   - **Diferencial Técnico:** Utilização de SQL com a função `LAG()` para comparar o ticket médio do último dia de vendas com o dia anterior, ignorando lacunas temporais.
+
+4. **Ranking de Faturamento por Categoria**
+   - **Tipo:** Barras Horizontais
+   - **Insight:** Identificação clara de que a categoria "Cerveja Comum" detém a maior fatia do faturamento bruto por volume.
+
+5. **Evolução Mensal de Vendas (Série Temporal)**
+   - **Tipo:** Gráfico de Linhas
+   - **Objetivo:** Identificar sazonalidade e tendências de crescimento ao longo dos meses.
+
+6. **Análise de Mix: Lucro vs Faturamento por Categoria**
+   - **Tipo:** Gráfico Combo (Barras + Linhas)
+   - **Métricas:** Lucro Total e Faturamento (Barras) e Margem Percentual (Linha).
+   - **Insight:** Demonstra visualmente quais categorias possuem maior margem, apesar de faturarem menos.
+
+7. **Share de Lucratividade: Artesanal vs Comum**
+   - **Tipo:** Gráfico de Rosca (Donut)
+   - **Pergunta:** Qual categoria é mais importante para a margem líquida?
+   - **Conclusão:** Revela que as Cervejas Artesanais possuem uma participação no lucro muito superior à sua participação no faturamento bruto.
+
+---
+
+### Queries SQL e Evidências
+As queries utilizadas para gerar os insights acima foram desenvolvidas em **Snowflake SQL** na própria plataforma da metabase, também estão disponíveis na pasta `/queries` deste repositório.
+
+> Conforme as boas práticas da Dadosfera, todos os ativos foram salvos na coleção exclusiva: `Kevin Meneses - 012026`.
