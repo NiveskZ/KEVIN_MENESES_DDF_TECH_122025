@@ -1,0 +1,39 @@
+Id,ProductNumber,ProductName,ProductCategory,DefaultPrice,StandardCost,Weight
+84ee6ea5-6e48-4660-bf7c-ba3d2725f03e,1,Cerveja Skol Pilsen Lata 350ml,Cerveja Comum,3.49,2.1,70
+0b4ec6d0-b9da-4ed3-9041-52fa6db9a999,2,Cerveja Brahma Chopp Lata 350ml,Cerveja Comum,3.59,2.2,80
+2b024f9a-6ec3-482e-97f5-701baf06be37,3,Cerveja Antarctica Boa Lata 350ml,Cerveja Comum,3.39,2.05,80
+67b97302-4f43-40ed-a6a5-0c3b7f70a062,4,Cerveja Heineken Long Neck 330ml,Cerveja Premium,7.5,4.8,100
+997764e8-1ea4-47c7-abc2-14695af2bcf4,5,Cerveja Spaten Munchen Lata 350ml,Cerveja Premium,5.29,3.5,90
+8a99b0d3-50a6-417b-9bc7-7be626aa111b,6,Cerveja Imperio Puro Malte Lata 350ml,Cerveja Premium,4.5,2.9,95
+76f49731-b251-4fa5-88f1-58586df8380d,7,Cerveja Michelob Ultra Lata 350ml,Cerveja Especial,5.9,3.8,40
+7e5d2dc9-b463-4849-935a-c9fde0167f64,8,Cerveja Stella Artois Pure Gold 330ml,Cerveja Especial,6.5,4.2,35
+cab9cfaa-b47b-4ebf-9974-87d2e8b413ba,9,Cerveja Bruder Baixa Gastronomia (S/ Glúten) 600ml,Cerveja Artesanal,22.9,14.0,20
+c2606927-2b4e-433b-be75-3a7e93d54e99,10,Roleta Russa Easy IPA Lata 350ml,Cerveja Artesanal,5.99,3.5,30
+daa7c027-8ef3-4116-9b9b-0bd7694ba8b9,11,Roleta Russa Imperial IPA Lata 350ml,Cerveja Artesanal,10.99,7.6,10
+47fd5b21-6e42-405e-872a-6ca5eeb3f9be,12,Roleta Russa New England IPA Lata 350ml,Cerveja Artesanal,9.99,6.8,15
+b4d5ff94-32e0-4dd5-ab7d-97c3bd14d77d,13,Growler Roleta Russa Easy IPA 1L,Cerveja Artesanal,19.99,13.4,30
+81f24aff-121b-4721-a4a4-865ae0600fb1,14,Cerveja Imigração Pilsen Garrafa 500ml,Cerveja Artesanal,16.99,10.0,25
+3c92d044-524d-4db4-9d10-7c88d0f40bf6,15,Cerveja Imigração Hop Lager Lata 350ml,Cerveja Artesanal,4.99,3.5,40
+c8244f8f-b093-4247-8985-a83b016ac04c,16,Growler Imigração Export 1L,Cerveja Artesanal,15.99,10.0,25
+e75fef30-a64a-4fe4-b6c8-8be2a681f1bf,17,Cerveja Dogma Rizoma Double IPA 473ml,Cerveja Artesanal,29.99,18.3,20
+f42e3ebc-1a13-41c1-a51c-ce0496a24d48,18,Cerveja Dogma American IPA (Lata Nova 355ml),Cerveja Artesanal,14.99,8.33,35
+0068c3ad-74d0-47f5-a29b-b6dd98d93e82,19,Cerveja Escafandrista Smoothie Sour 473ml,Cerveja Artesanal,45.9,30.0,5
+a4b640e0-627c-4f79-91ee-0dd3f430d971,20,Cerveja Three Lions Session IPA (SJC) 473ml,Cerveja Artesanal,24.0,15.0,15
+0eb87d17-599b-4b91-8437-f3a87c91f76e,21,Cerveja Campinas Forasteira IPA 473ml,Cerveja Artesanal,21.0,13.5,18
+70e3450d-28c0-4f9a-a94d-89e425d60355,22,Wienbier 55 Pilsen Lata 710ml,Cerveja Comum,8.9,5.5,60
+fdfc6edb-e904-470d-aa46-b158257581a2,23,Wienbier 58 Chopp de Vinho 710ml,Coquetel Alcoólico,9.9,6.0,50
+bfaee53d-1114-4426-bc02-3e77f029e0e4,24,Cerveja Guinness Draught Lata 440ml,Importada,37.99,28.0,25
+fc522ed4-dd48-456f-968a-e86e9e18736c,25,Cerveja Paulaner Weissbier 500ml,Importada,24.9,16.5,12
+bd3b0a3e-5f99-42c9-ad93-d3fd673cc9a0,26,Cerveja Blue Moon Belgian White 355ml,Importada,17.9,11.0,15
+353d012d-3262-4279-b299-67d99df81524,27,Whisky Jack Daniels 1L,Destilados,169.9,120.0,5
+0c5efc1b-359c-4a45-94f3-0be98c4028ba,28,Gin Tanqueray 750ml,Destilados,119.9,85.0,5
+fe6d0d2d-34ed-4cec-8351-816ebe388d46,29,Vodka Absolut 1L,Destilados,89.9,60.0,8
+a570e5e4-9c2c-4c67-89cf-528491c23f72,30,Cachaça Velho Barreiro 910ml,Destilados,14.9,9.0,25
+d731f51a-19e8-44ec-abe9-5524b7dd76a7,31,Refrigerante Coca-Cola 2L,Não Alcoólico,10.9,7.5,100
+2b3dfaac-5844-49b5-a1ec-222afe50523c,32,Água Mineral s/ Gás 500ml,Não Alcoólico,3.0,0.9,80
+24c5f8ec-eb6f-497c-9016-46efc3aaa443,33,Energético Red Bull 250ml,Não Alcoólico,8.9,5.5,60
+b72f0c42-85b5-46a4-afba-99d2e8d4b728,34,Gelo Filtrado Cubo 5kg,Gelo/Carvão,14.0,6.0,75
+d694d1d5-511f-4973-900d-9e3f846502d1,35,Carvão Vegetal 4kg,Gelo/Carvão,22.0,12.0,40
+048f55fe-8171-43da-8006-2b5482399081,36,Chocolate KitKat,Bomboniere,4.5,2.5,50
+41ec313e-a75f-41b8-ae97-8328eb58c52e,37,Salgadinho Doritos 140g,Bomboniere,12.9,8.0,45
+94d10d12-c50a-4818-a0f0-aadc8384cfbe,38,Arroz Tio João 1kg,Mercearia,7.9,5.0,20
