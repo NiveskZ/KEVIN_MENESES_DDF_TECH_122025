@@ -19,7 +19,7 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        url = "https://raw.githubusercontent.com/NiveskZ/KEVIN_MENESES_DDF_TECH_122025/main/data/silver/sales_sample.csv"
+        url="https://raw.githubusercontent.com/NiveskZ/KEVIN_MENESES_DDF_TECH_122025/main/data/silver/sales_sample.csv"
         df = pd.read_csv(url)  
         df['OrderDate'] = pd.to_datetime(df['OrderDate'])
         # Criando lista de produtos únicos
@@ -32,13 +32,13 @@ def load_data():
 df_sales, df_prod = load_data()
 
 # --- SIDEBAR ---
-st.sidebar.image("https://logodownload.org/wp-content/uploads/2019/10/dadosfera-logo.png", width=150)
+st.sidebar.image("https://dadosfera.ai/wp-content/uploads/2022/01/icone-base.png", width=150)
 st.sidebar.title("Menu de Navegação")
-menu = st.sidebar.radio("Ir para:", ["📊 Dashboard de Vendas", "🔍 Recomendação de Produtos"])
+menu = st.sidebar.radio("Ir para:", ["Dashboard de Vendas", "Recomendação de Produtos"])
 
 # --- PÁGINA: DASHBOARD ---
-if menu == "📊 Dashboard de Vendas":
-    st.title("🚀 Varejo Inteligente - Analytics")
+if menu == "Dashboard de Vendas":
+    st.title("Varejo Inteligente - Analytics")
     
     # Métricas de Topo
     col_m1, col_m2, col_m3 = st.columns(3)
@@ -52,19 +52,36 @@ if menu == "📊 Dashboard de Vendas":
 
     st.markdown("---")
 
-    col1, col2 = st.columns([1, 1])
+    col1 = st.container()
     
     with col1:
         st.subheader("Faturamento por Categoria")
-        fig = px.pie(df_sales, names='Category', values='TotalAmount', 
-                     hole=0.4, color_discrete_sequence=px.colors.sequential.RdBu)
+
+        # preparar dados
+        df_sales['TotalAmount'] = pd.to_numeric(df_sales['TotalAmount'], errors='coerce').fillna(0)
+        cat_rev = df_sales.groupby('Category', dropna=False)['TotalAmount'].sum().sort_values(ascending=False)
+
+        # controles
+        top_n = st.slider("Mostrar Top N categorias", min_value=5, max_value=20, value=10, step=1, key="top_n_cat")
+        chart_type = st.selectbox("Tipo de gráfico", ["Barra horizontal (recomendada)", "Treemap"], key="cat_chart_type")
+
+        # criar dataframe com Others
+        top = cat_rev.head(top_n)
+        others = cat_rev.iloc[top_n:].sum()
+        plot_df = top.reset_index().rename(columns={'Category':'Category', 'TotalAmount':'TotalAmount'})
+        if others > 0:
+            plot_df = pd.concat([plot_df, pd.DataFrame([{'Category':'Others', 'TotalAmount': others}])], ignore_index=True)
+
+        # plot
+        if chart_type == "Barra horizontal (recomendada)":
+            fig = px.bar(plot_df, x='TotalAmount', y='Category', orientation='h',
+                        title=f"Top {top_n} Categorias por Faturamento (Others agregado)")
+            fig.update_layout(yaxis={'categoryorder':'total ascending'}, margin=dict(l=60, r=20, t=40, b=40))
+        else:
+            fig = px.treemap(plot_df, path=['Category'], values='TotalAmount',
+                            title=f"Top {top_n} Categorias por Faturamento (Treemap)")
+
         st.plotly_chart(fig, use_container_width=True)
-        
-    with col2:
-        st.subheader("Evolução Mensal de Vendas")
-        df_mensal = df_sales.set_index('OrderDate').resample('M')['TotalAmount'].sum().reset_index()
-        fig2 = px.line(df_mensal, x='OrderDate', y='TotalAmount', markers=True)
-        st.plotly_chart(fig2, use_container_width=True)
 
 # --- PÁGINA: SIMILARIDADE ---
 elif menu == "🔍 Recomendação de Produtos":
@@ -72,7 +89,6 @@ elif menu == "🔍 Recomendação de Produtos":
     
     if not df_prod.empty:
         # Seleção de Produto
-        # Aqui corrigimos o erro: o selectbox define o produto selecionado
         prod_list = df_prod['ProductName'].tolist()
         selected_prod = st.selectbox("Selecione um produto da base para encontrar similares:", prod_list)
         
