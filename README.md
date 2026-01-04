@@ -50,7 +50,7 @@ flowchart LR
     E --> F[Análise & Visualização]
     F --> G[Entrega Final & Vídeo]
 
-    %% Estilização Profissional e Minimalista
+    %% Estilização
     style C fill:#2c3e50,stroke:#2c3e50,color:#fff
     style G fill:#27ae60,stroke:#27ae60,color:#fff
 ```
@@ -93,7 +93,7 @@ FASE 5: Entrega (Item 10)
 
   - [ ] Gravação do vídeo de apresentação da solução.
 
-  - [ ] Documentação final e organização do repositório.
+  - [x] Documentação final e organização do repositório.
 
 ## Item 1: Geração de Dados 
 Para simular um cenário real de varejo, foi desenvolvido um script Python utilizando a biblioteca Faker e Numpy.
@@ -109,6 +109,21 @@ Para simular um cenário real de varejo, foi desenvolvido um script Python utili
    - Cohorts: Base de clientes com datas de cadastro distribuídas ao longo de 11 anos.
 
 - Artifacts: `vendas.csv`, `clientes.csv`, `produtos.csv`
+
+### Evidências das Tabelas (Previews)
+
+<details>
+  <summary>🔻 Clique para ver o Preview da tabela de vendas gerada na supabase </summary>
+  <br>
+  <img src="imgs/public-supabase.png" alt="Preview Vendas">
+</details>
+
+<details>
+  <summary>🔻 Clique para ver o Preview do schema </summary>
+  <br>
+  <img src="imgs/supabase-schema.png" alt="Preview Schema">
+</details>
+
 ## Item 2 & 3: Integração e Catalogação
 
 A ingestão dos dados foi realizada conectando um banco transacional PostgreSQL (Supabase) à Dadosfera.
@@ -192,6 +207,12 @@ Os dados foram mapeados para o padrão CDM para garantir interoperabilidade.
 | | | `valor_unitario` | `UnitPrice` | Preço unitário praticado na transação específica. | Decimal (Currency) |
 | | | `valor_total` | `TotalAmount` | Valor total da linha (quantidade × preço unitário). | Decimal (Currency) |
 
+</details>
+
+<details>
+  <summary>🔻 Clique para ver o Preview da CDM na supabase </summary>
+  <br>
+  <img src="imgs/silver-supabase.png" alt="Preview CDM">
 </details>
 
 ### Estratégia de Materialização (View vs Table)
@@ -287,3 +308,77 @@ Para atender aos requisitos do case, foram criadas **7 visualizações** utiliza
 As queries utilizadas para gerar os insights acima foram desenvolvidas em **Snowflake SQL** na própria plataforma da metabase, também estão disponíveis na pasta `/queries` deste repositório.
 
 > Conforme as boas práticas da Dadosfera, todos os ativos foram salvos na coleção exclusiva: `Kevin Meneses - 012026`.
+
+## Data App (Streamlit & Inteligência)
+
+Desenvolvimento de um Data App interativo para exploração dinâmica dos dados processados. O App foi prototipado no **Google Colab** e o deploy final realizado no **Streamlit Community Cloud**.
+
+**[CLIQUE AQUI PARA ACESSAR O DATA APP ONLINE](https://dadosfera-ddf-tech-kevin.streamlit.app/)**
+
+### Diferenciais Técnicos Implementados
+1. **Motor de Recomendação (NLP):** Implementação de similaridade de produtos utilizando **TF-IDF Vectorization** e **Similaridade de Cosseno**. O sistema analisa nomes e categorias para sugerir itens correlatos ao usuário.
+2. **Interface Analítica:**
+   - **Métricas Reais:** KPIs de Faturamento, Volume e Ticket Médio.
+   - **Visualização Dinâmica:** Gráficos interativos com Plotly, permitindo alternar entre visões de Barras e Treemaps com filtros de "Top N" categorias.
+
+### Como reproduzir via Google Colab
+Caso deseje testar o ambiente de desenvolvimento:
+1. Execute o notebook `03_data_app.ipynb`.
+2. O script gerará o arquivo `app.py` localmente.
+3. Utilize o IP retornado pelo comando `curl` como senha no link do `localtunnel`.
+
+![Dashboard App](https://github.com/NiveskZ/KEVIN_MENESES_DDF_TECH_122025/blob/main/imgs/DataApp-Preview.png)
+
+## Item 10: Solução de Arquitetura e Viabilidade
+
+### 1. Diagnóstico da Arquitetura Atual
+Com base no diagrama fornecido (AWS Lambda → Kinesis → Firehose → S3/Redis), identificou-se uma arquitetura focada em **ingestão de streaming puro**. Embora robusta para transporte de dados, ela apresenta lacunas críticas para a estratégia de IA e Analytics da empresa:
+
+* **Complexidade de Gestão:** A manutenção de clusters de *Redis* e o gerenciamento de shards no *Kinesis Stream* exigem alta especialização em DevOps/Infraestrutura, desviando o foco do time de dados da regra de negócio.
+* **Ausência de Camada Semântica:** O fluxo termina em armazenamento (S3/Redis), sem uma etapa clara de modelagem, catalogação ou Data Quality. Isso cria um "Data Swamp" (pântano de dados), onde temos muitos dados, mas pouca informação confiável.
+* **Fragmentação:** A separação entre dados "quentes" (Redis) e "frios" (S3) dificulta análises históricas integradas e o treinamento de modelos de IA.
+
+### 2. Proposta de Solução com Dadosfera
+A proposta é substituir a complexidade de múltiplos serviços de infraestrutura por uma **Plataforma Unificada de Dados**. A Dadosfera assume o papel de orquestradora, conectando-se às fontes (ou substituindo a ingestão via Lambda) e entregando o dado pronto para consumo.
+
+**Diagrama da Arquitetura Proposta:**
+
+```mermaid
+flowchart LR
+    subgraph "Legado (Sendo Substituído)"
+    A[Fontes de Dados]
+    end
+
+    subgraph "Núcleo Dadosfera (Unified Data Platform)"
+    B(Pipeline de Coleta e Ingestão) -->|Raw Data| C{Data Lakehouse Integrado}
+    C -->|Great Expectations| D[Camada de Qualidade & Governança]
+    D -->|Modelagem CDM| E[Catálogo de Dados Unificado]
+    end
+
+    subgraph "Entrega de Valor"
+    E -->|Business Intelligence| F[Metabase: Dashboards]
+    E -->|Data Apps & IA| G[Streamlit: Recomendação]
+    end
+
+    A --> B
+    style B fill:#FF6B6B,stroke:#333,color:#fff
+    style C fill:#2c3e50,stroke:#2c3e50,color:#fff
+    style D fill:#95a5a6,stroke:#333,color:#fff
+    style F fill:#27ae60,stroke:#27ae60,color:#fff
+    style G fill:#27ae60,stroke:#27ae60,color:#fff
+```
+### 3. Justificativa de Viabilidade e Ganhos
+
+A adoção desta nova arquitetura resolve o principal problema: transformar dados brutos em inteligência acionável.
+
+- Centralização da Governança: Diferente da arquitetura atual, onde a qualidade precisa ser codificada manualmente em Lambdas, a Dadosfera oferece Data Quality e Linhagem nativos.
+
+- Redução de Complexidade: Eliminamos a necessidade de gerenciar infraestrutura de streaming (Kinesis/Firehose) para focar na modelagem do dado.
+
+- Habilitação de IA: A arquitetura atual armazena dados no Redis (Key-Value), o que é ótimo para cache, mas ruim para treinar modelos. O Lakehouse da Dadosfera permite que ferramentas de IA (como demonstrado no Data App) consumam históricos completos e organizados.
+
+### 4. Prova de Conceito 
+
+Como evidência da capacidade de entrega desta arquitetura, desenvolvi o projeto "Varejo Local" (presente neste repositório).
+
+Embora seja um cenário controlado, ele demonstra que a plataforma permite sair do "zero" (dados brutos) até a entrega de Sistemas de Recomendação (IA) e Dashboards Executivos em um ambiente único e governado. Para a migração da arquitetura atual da empresa, o processo envolverá etapas de mapeamento e limpeza, mas a infraestrutura base para suportar essa evolução já está validada por este case.
