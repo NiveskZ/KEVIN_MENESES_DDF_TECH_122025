@@ -8,7 +8,6 @@ import plotly.express as px
 # Configuração da Página
 st.set_page_config(page_title="Varejo | Data App", layout="wide", initial_sidebar_state="expanded")
 
-# --- ESTILIZAÇÃO CUSTOMIZADA ---
 st.markdown("""
     <style>
     .main { background-color: #0e1117; }
@@ -16,14 +15,14 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# 1. Carregamento de Dados (Lendo o CSV que você subirá ao GitHub)
+# 1. Carregamento de Dados 
 @st.cache_data
 def load_data():
     try:
-        url = 'KEVIN_MENESES_DDF_TECH_122025\data\silver\sales_sample.csv'
+        url = 'https://raw.githubusercontent.com/NiveskZ/KEVIN_MENESES_DDF_TECH_122025/refs/heads/main/data/silver/sales_sample.csv'
         df = pd.read_csv(url)  
         df['OrderDate'] = pd.to_datetime(df['OrderDate'])
-        # Criando lista de produtos únicos baseada no seu banco
+        # Criando lista de produtos únicos
         df_prod = df[['ProductName', 'Category']].drop_duplicates().reset_index(drop=True)
         return df, df_prod
     except Exception as e:
