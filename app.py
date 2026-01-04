@@ -20,7 +20,7 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        url = 'https://raw.githubusercontent.com/NiveskZ/KEVIN_MENESES_DDF_TECH_122025/refs/heads/main/data/silver/sales_sample.csv?token=GHSAT0AAAAAADQ4TPPVAJRHAS3RSIKPKWA42K2QMOA'
+        url = 'KEVIN_MENESES_DDF_TECH_122025\data\silver\sales_sample.csv'
         df = pd.read_csv(url)  
         df['OrderDate'] = pd.to_datetime(df['OrderDate'])
         # Criando lista de produtos únicos baseada no seu banco
