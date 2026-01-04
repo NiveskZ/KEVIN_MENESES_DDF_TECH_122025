@@ -35,8 +35,6 @@ Este projeto simula a estruturação da área de dados de um comércio local ("A
 
 ## 📋 Item 0: Planejamento (Agile & PMBOK)
 
-Este projeto visa estruturar a área de dados de um comércio local (Adega e Conveniência) que está iniciando sua transformação digital. O objetivo é centralizar dados de vendas, clientes e estoque para permitir análises descritivas e prescritivas.
-
 O planejamento abaixo segue as fases do ciclo de vida de dados e gerenciamento de projetos, focado na entrega de valor (MVP).
 
 ### Fluxo de Trabalho (Macro)
@@ -262,7 +260,7 @@ A etapa final consistiu na criação de um ecossistema analítico no **Metabase 
 
 ### Dashboard Interativo
 O dashboard completo pode ser acessado publicamente através do link abaixo:
-[Dashboard de Performance - Adega Local](http://metabase-treinamentos.dadosfera.ai/public/dashboard/2d9f8081-d542-44c6-8f42-e59d7c056b10)
+[Dashboard de Performance - Varejo Local](http://metabase-treinamentos.dadosfera.ai/public/dashboard/2d9f8081-d542-44c6-8f42-e59d7c056b10)
 
 ![Dashboard](https://github.com/NiveskZ/KEVIN_MENESES_DDF_TECH_122025/blob/main/imgs/Dashboard.png)
 ---
