@@ -84,8 +84,8 @@ if menu == "Dashboard de Vendas":
         st.plotly_chart(fig, use_container_width=True)
 
 # --- PÁGINA: SIMILARIDADE ---
-elif menu == "🔍 Recomendação de Produtos":
-    st.title("🔍 Inteligência de Similaridade")
+elif menu == "Recomendação de Produtos":
+    st.title("Inteligência de Similaridade")
     
     if not df_prod.empty:
         # Seleção de Produto
